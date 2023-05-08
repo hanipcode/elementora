@@ -11,14 +11,10 @@ func enter():
 	player.stop_moving()
 
 
-func input(_event: InputEvent) -> BaseState.State:
+func physics_process(_delta):
 	var axis = InputHelper.get_axis()
 	if axis != 0 and player.is_on_floor():
 		return State.RUN
-	return State.NULL
-
-
-func physics_process(_delta):
 	if not player.is_on_floor():
 		return State.FALL
 
