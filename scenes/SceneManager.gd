@@ -20,11 +20,7 @@ func init_scene(new_scene: BaseScene = null):
 
 
 func change_scene(scene_type: BaseScene.Scenes):
-	var path_map = {
-		BaseScene.Scenes.MENU: "res://scenes//main_menu.tscn",
-		BaseScene.Scenes.LEVEL_1: "res://scenes/first_level.tscn"
-	}
-	var new_scene = load(path_map[scene_type]).instantiate()
+	var new_scene = load(BaseScene.MAP[scene_type]).instantiate()
 	add_child(new_scene)
 	curent_scene.queue_free()
 	init_scene(new_scene)

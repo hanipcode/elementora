@@ -6,6 +6,8 @@ extends CharacterBody2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 @onready var state_manager: CharacterStateManager = $CharacterStateManager
 @onready var animations: AnimatedSprite2D = $AnimatedSprite2D
+@onready var element_detection: ElementDetection = $ElementDetection
+@onready var element_type: Element.Type = PlayerData.selected_element_type
 
 
 func stop_moving() -> void:
@@ -17,7 +19,9 @@ func move() -> void:
 
 
 func _ready() -> void:
+	print("player element is", Element.STRING_MAP[element_type])
 	state_manager.init(self)
+	element_detection.init(self)
 
 
 func _unhandled_input(event: InputEvent):
