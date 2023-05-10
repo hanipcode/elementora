@@ -1,0 +1,175 @@
+[gd_scene load_steps=24 format=3 uid="uid://chplh0o6jdofk"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_j4omo"]
+[ext_resource type="Texture2D" uid="uid://btici8wg86eix" path="res://art_temp/PlayerSpriteSheetCyber.png" id="1_tewx2"]
+[ext_resource type="Script" path="res://player/CharacterStateManager.gd" id="3_0yrmu"]
+[ext_resource type="Script" path="res://player/IdleState.gd" id="4_603cn"]
+[ext_resource type="Script" path="res://player/RunState.gd" id="5_dvfl5"]
+[ext_resource type="Script" path="res://player/FallState.gd" id="6_dellh"]
+[ext_resource type="Script" path="res://player/LandState.gd" id="7_uban0"]
+[ext_resource type="Script" path="res://player/ElementDetection.gd" id="8_i822i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btnuq"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byl0e"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hweok"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6poin"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc2l3"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiggf"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sm2b"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuq30"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4niqk"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwbpm"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvd3u"]
+atlas = ExtResource("1_tewx2")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qxigo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btnuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byl0e")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hweok")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6poin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc2l3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiggf")
+}],
+"loop": true,
+"name": &"land",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sm2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuq30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4niqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwbpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvd3u")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wo7uh"]
+radius = 2.0
+height = 16.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vgotj"]
+font_size = 7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhpaj"]
+radius = 19.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_j4omo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.219608, 1, 1, 1)
+sprite_frames = SubResource("SpriteFrames_qxigo")
+animation = &"land"
+frame = 2
+frame_progress = 0.992727
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_wo7uh")
+
+[node name="CharacterStateManager" type="Node" parent="."]
+script = ExtResource("3_0yrmu")
+
+[node name="Idle" type="Node" parent="CharacterStateManager"]
+script = ExtResource("4_603cn")
+
+[node name="Run" type="Node" parent="CharacterStateManager"]
+script = ExtResource("5_dvfl5")
+
+[node name="Fall" type="Node" parent="CharacterStateManager"]
+script = ExtResource("6_dellh")
+
+[node name="Land" type="Node" parent="CharacterStateManager"]
+script = ExtResource("7_uban0")
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -19.0
+offset_right = 33.0
+offset_bottom = -5.0
+text = "state"
+label_settings = SubResource("LabelSettings_vgotj")
+
+[node name="ElementDetection" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("8_i822i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElementDetection"]
+shape = SubResource("CircleShape2D_qhpaj")
+debug_color = Color(0.619608, 0.466667, 0.686275, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+enable_mode = 1
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
