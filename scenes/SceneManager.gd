@@ -8,6 +8,7 @@ var curent_scene: BaseScene
 
 func _ready():
 	init_scene()
+	GameEffect.game_over_signal.connect(_on_game_over)
 
 
 func init_scene(new_scene: BaseScene = null):
@@ -15,7 +16,6 @@ func init_scene(new_scene: BaseScene = null):
 		curent_scene = main_menu
 	else:
 		curent_scene = new_scene
-	print(curent_scene)
 	curent_scene.on_should_change_scene.connect(_on_should_change_scene)
 
 
@@ -28,3 +28,9 @@ func change_scene(scene_type: BaseScene.Scenes):
 
 func _on_should_change_scene(scene_type: BaseScene.Scenes):
 	change_scene(scene_type)
+
+
+func _on_game_over():
+	var last_level_scene = self.curent_scene.scene_type
+	change_scene(BaseScene.Scenes.GAME_OVER)
+	(curent_scene as GameOverScene).last_level = last_level_scene

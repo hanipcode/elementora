@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 InputHelper="*res://components/input_helper.gd"
 EnvironmentEffect="*res://components/environment_effect.gd"
 PlayerData="*res://player/PlayerData.gd"
+Constants="*res://resource/constants.gd"
+GameEffect="*res://components/game_effect.gd"
 
 [display]
 

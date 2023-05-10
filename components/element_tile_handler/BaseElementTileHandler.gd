@@ -10,11 +10,11 @@ func interact_with_player(
 ):
 	if not element_tile.active:
 		return
-	match player.element_type:
+	match PlayerData.selected_element_type:
 		Element.Type.FIRE:
 			handle_player_fire(player, tile_map, pos, element_tile)
 		Element.Type.ICE:
-			handle_player_ice(player, tile_map, pos, element_tile)
+			call_deferred("handle_player_ice", player, tile_map, pos, element_tile)
 
 	print("element tile_map ", Element.STRING_MAP[element_tile.type], " is not implemented")
 

@@ -5,7 +5,9 @@ var invisible_platform_component = preload("res://components/invisble_platform.t
 
 
 func handle_player_ice(_player, tile_map, position, _element_tile):
-	tile_map.set_cell(0, position, 5, Vector2i(-1, -1))
+	tile_map.set_cell(
+		0, position, Constants.EFFECT_TILESET_ID, Constants.ATLAS_COORDINATES[Element.Type.ICE]
+	)
 	# var new_element_tile = ElementTile.create_element_tile(Element.Type.ICE, false)
 	# var tile_data = tile_map.get_cell_tile_data(0, position, false)
 	# tile_data.set_custom_data("ElementTile", new_element_tile)
