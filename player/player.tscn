@@ -123,6 +123,7 @@ radius = 19.0
 script = ExtResource("1_j4omo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.219608, 1, 1, 1)
 sprite_frames = SubResource("SpriteFrames_qxigo")
 animation = &"land"
 frame = 2
@@ -164,3 +165,11 @@ script = ExtResource("8_i822i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElementDetection"]
 shape = SubResource("CircleShape2D_qhpaj")
 debug_color = Color(0.619608, 0.466667, 0.686275, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+enable_mode = 1
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

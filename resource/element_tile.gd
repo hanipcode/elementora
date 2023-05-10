@@ -21,6 +21,7 @@ func is_passable() -> bool:
 
 func get_element_handler() -> BaseElementTileHandler:
 	var element_handler: BaseElementTileHandler
+	print(type, Element.STRING_MAP[type])
 	match type:
 		Element.Type.FIRE:
 			element_handler = FireElementTileHandler.new()

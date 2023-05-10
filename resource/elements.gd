@@ -2,6 +2,7 @@ class_name Element
 extends Object
 
 enum Type {
+	NULL,
 	NEUTRAL,
 	WATER,
 	FIRE,
@@ -10,6 +11,7 @@ enum Type {
 }
 
 const STRING_MAP = {
+	Type.NULL: "Null",
 	Type.NEUTRAL: "Neutral",
 	Type.WATER: "Water",
 	Type.FIRE: "Fire",
