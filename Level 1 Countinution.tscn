@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b46glxb0hw5r8"]
+[gd_scene load_steps=9 format=3 uid="uid://bxwxh2lg4paw"]
 
-[ext_resource type="Texture2D" uid="uid://ndg28t0prao0" path="res://art/Initial Tile.svg" id="1_xl0y8"]
-[ext_resource type="Texture2D" uid="uid://b45w18h3ls8w0" path="res://art/Temp ice.svg" id="2_wqh5i"]
-[ext_resource type="Texture2D" uid="uid://cmf8tl2d3j8rc" path="res://art/Water.svg" id="3_y7wt1"]
-[ext_resource type="Texture2D" uid="uid://ylar7o6rl7dq" path="res://art/Lever.svg" id="4_yuq07"]
+[ext_resource type="Texture2D" path="res://art/Initial Tile.svg" id="1_xl0y8"]
+[ext_resource type="Texture2D" path="res://art/Temp ice.svg" id="2_wqh5i"]
+[ext_resource type="Texture2D" path="res://art/Water.svg" id="3_y7wt1"]
+[ext_resource type="Texture2D" path="res://art/Lever.svg" id="4_yuq07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuped"]
 texture = ExtResource("1_xl0y8")
@@ -76,5 +76,10 @@ layer_0/tile_data = PackedInt32Array(327680, 1, 0, 393216, 1, 1, 458752, 1, 2, 5
 
 [node name="Lever" type="Sprite2D" parent="."]
 position = Vector2(860.25, 78)
+scale = Vector2(0.550781, 0.53125)
+texture = ExtResource("4_yuq07")
+
+[node name="Lever2" type="Sprite2D" parent="."]
+position = Vector2(538, 49)
 scale = Vector2(0.550781, 0.53125)
 texture = ExtResource("4_yuq07")
